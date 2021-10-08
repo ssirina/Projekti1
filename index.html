@@ -6,8 +6,33 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <script src="projekti1.js">
+        <h1>Hapanjuurileivontakokemus</h1>
+        <div>
+            <h1></h1>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Tervetuloa leipomaan!</h3>
+                    <p>Tervetuloa tekemään herkullista hapanjuurileipää. Ensin kuitenkin haluaisimme, että kerrot kuka olet ja mikä on leipäjuuresi nimi.</p>
+                    <form>
+                        Leipurin nimi:
+                        <input type="text" id="leipuri">
+                        <br/>
+                        Juuren nimi:
+                        <input type="text" id="juuri">
+                        <br/>
+                      </form>
+                    <button onclick="tallennaTiedot()">Tallenna tiedot</button>
+                    <button onclick="tulostaTiedot()">Tulosta tiedot</button>
 
+                </div>
+                <div class="grid-item" >
+                <img class="image" src="https://www.hankikoira.fi/sites/default/files/rodut/2014_06_29_065_pieni.jpg">
+                    
+                </div>
+              </div>
+            
+        </div>
+        <script src="projekti1.js">
         </script>
     </body>
 </html>
