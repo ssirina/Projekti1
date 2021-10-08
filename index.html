@@ -11,22 +11,107 @@
             <h1></h1>
             <div class="grid-container">
                 <div class="grid-item">
-                    <h3>Tervetuloa leipomaan!</h3>
-                    <p>Tervetuloa tekemään herkullista hapanjuurileipää. Ensin kuitenkin haluaisimme, että kerrot kuka olet ja mikä on leipäjuuresi nimi.</p>
-                    <form>
-                        Leipurin nimi:
-                        <input type="text" id="leipuri">
-                        <br/>
-                        Juuren nimi:
-                        <input type="text" id="juuri">
-                        <br/>
-                      </form>
-                    <button onclick="tallennaTiedot()">Tallenna tiedot</button>
-                    <button onclick="tulostaTiedot()">Tulosta tiedot</button>
+                    <div id="tervetulosivu">
+                        <h3>Tervetuloa leipomaan!</h3>
+                        <p>Tervetuloa tekemään herkullista hapanjuurileipää. Ensin kuitenkin haluaisimme, että kerrot kuka olet ja mikä on leipäjuuresi nimi.</p>
+                        <form>
+                            Leipurin nimi:
+                            <input type="text" id="leipuri">
+                            <br/>
+                            Juuren nimi:
+                            <input type="text" id="juuri">
+                            <br/>
+                        </form>
+                        <button onclick="tallennaTiedot()">Tallenna tiedot</button>
+                        <button onclick="tulostaTiedot()">Tulosta tiedot</button>
+                        <br>
+                    </div>
+                   
+                     <!--Tässä voisi sanoa, että "Leipuri Irina"-->
+
+                    <div id="leipaValinta">
+                        <h3>Hienoa, leipuri!</h3>
+                        <p>Valitse ensin minkä leivän haluat leipoa.</p>
+                        <label for="leivat">Valitse leipä:</label>
+
+                        <select name="leivat" id="leivat">
+                            <option value="vehna">Vehnäleipä</option>
+                            <option value="seka">Sekaleipä</option>
+                        </select>
+                        <br>
+                        <button onclick="tallennaValinta()">Valitse leipä</button>
+
+                    </div>
+
+                    <!--Tässä voisi sanoa, että se valinta, jonka käyttäjä teki, on hyvä valinta-->
+                    <div id="aloitetaan">
+                        <h3 >Hyvä valinta! Oletteko valmiina, leipuri ja juuri?</h3>
+                        <p>Ruoki ensin juuri.</p>
+                        <button onclick="ruokiJuuri()">Ruoki juuri</button>
+                    </div>
+                    
+                    <!--Juuren nimi otsikkoon-->
+                    <div id="sekoitaTaikina">
+                        <h3>Juuri taitaa olla valmis!</h3>
+                        <p>Nyt on aika sekoittaa taikina. Mutta älä vielä lisää suolaa!</p>
+                        <button onclick="sekoitaTaikina()">Sekoita taikina</button>
+                    </div>
+                    
+                    <div id="autolyysi">
+                        <h3>Hyvältä näyttää!</h3>
+                        <p>Nyt vuorossa on autolyysi, jonka aikana taikina kehittyy. Peitä taikina tiiviiksi ja anna sen tekeytyä tunti.</p>
+                        <button onclick="autolyysi()">Anna tekeytyä</button>
+                    </div>
+                    
+                    <!--Tämä voisi ehdottaa myös toista taittelua, kun eka on tehty, ja vaihtaa vain kuvia. Seuraavat vois myös -->
+                    <div id="taittele">
+                        <h3>Valmiilta näyttää!</h3>
+                        <p>Lisää alkuun suola ja painele se taikinaan. Taittele sitten taikinaa puolen tunnin välein kaksi kertaa, jotta sen gluteeniverkko vahvistuu.</p>
+                        <button onclick="suolaa()">Lisää suola</button>
+                        <button onclick="taittele()">Taittele taikinaa</button>
+                    </div>
+
+                    <div id="kohota">
+                        <h3>Taikina näyttää hyvältä</h3>
+                        <p>Anna sen nyt kohota 30 prosenttia</p>
+                        <button onclick="kohota()">Kohota taikina</button>
+                    </div>
+
+                    <div id="muotoile">
+                        <h3 >Taikina on kohonnut!</h3>
+                        <p>Nyt on aika muotoilla leipä! Kun olet tehnyt ensimuotoilun ja antanut leivän levätä pöydällä puoli tuntia, taittele ja muotoile se pyöreäksi tai pitkulaiseksi ja laita kohotuskoriin.</p>
+                        <button onclick="muotoile()">Muotoile leipä</button>
+                    </div>
+
+                    <div id="kylmalepo">
+                        <h3 >Olet jo melkein valmis!</h3>
+                        <p>Nyt varmista, että leivät alkavat kohota huoneen lämmössä ja siirrä ne sitten jääkaapin alimmalle hyllylle kylmälepoon. Leivät kohoavat hitaasti kylmälevossa ja niiden maku kehittyy entistä herkullisemmaksi!</p>
+                        <button onclick="kylmäLepo()">Siirrä kylmälepoon</button>
+                    </div>
+                    
+                    <div id="viilla">
+                        <h3>Koristellaanpa leipä!</h3>
+                        <p>Leipä on kehittynyt jääkaapissa ja ennen paistamista siihen voi tehdä kauniin koristekuvion. Ei muuta kuin terä käteen ja viiltämään!</p>
+                        <button onclick="viilla()">Koristele leipä</button>
+                    </div>
+                    
+                    <div id="paista">
+                        <h3 >Paistoa vaille valmis!</h3>
+                        <p>Oletkin jo lämmittänyt uunin ja padan 250 asteeseen. Nyt ei muuta kuin leipä pataan ja pata uuniin. Ota leipä 15 minuutin kuluttua pois padasta ja paista ilman pataa 5 minuuttia 250 asteessa. Laske sitten uunin lämpötilaa 220 asteeseen ja paista vielä 20 minuuuttia lisää. Kun leipä on valmis, sen sisältä kuuluu pientä rapsahtelua ja sen pohja kumisee koputtaessa.</p>
+                        <button onclick="paista()">Paista leipä</button>
+                    </div>
+                    
+                    <!--Teksti vaihtuu ennen kuvaa -->
+                    <div id="valmis">
+                        <h3 >Mikä herkullinen tuoksu täällä leijuukaan!</h3>
+                        <p>Ja katso kuinka herkulliselta leipäsi näyttää. Malta kuitenkin vielä ainakin tunti, jotta leivän kosteus ehtii tasoittua.</p>
+                        <button onclick="tallennaLeipomus()">Ruoki juuri</button>
+                    </div>
+                    
 
                 </div>
                 <div class="grid-item" >
-                <img class="image" src="https://www.hankikoira.fi/sites/default/files/rodut/2014_06_29_065_pieni.jpg">
+                <img class="image" alt="Muista kuvaus!!" src="https://www.hankikoira.fi/sites/default/files/rodut/2014_06_29_065_pieni.jpg">
                     
                 </div>
               </div>

@@ -19,6 +19,56 @@ body {background-color: coral;}
 
   .image {
       width: 90vmin;
-     
+  }
 
+  #tervetulosivu {
+    display: inline;
+  }
+  
+  #aloitetaan {
+    display: none;
+  }
+
+  #leipaValinta {
+    display: none;
+  }
+
+  #sekoitaTaikina {
+    display: none;
+  }
+  
+  #autolyysi {
+    display: none;
+  }
+  
+  #taittele {
+    display: none;
+  }
+  
+  #taittele {
+    display: none;
+  }
+  
+  #kohota {
+    display: none;
+  }
+  
+  #muotoile {
+    display: none;
+  }
+  
+  #kylmalepo {
+    display: none;
+  }
+
+  #viilla {
+    display: none;
+  }
+  
+  #paista {
+    display: none;
+  }
+  
+  #valmis {
+    display: none;
   }

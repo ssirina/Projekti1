@@ -11,3 +11,8 @@ function tulostaTiedot() {
     console.log("Leipurin nimi: " + sessionStorage.getItem("leipuri"));
     console.log("Juuren nimi: " + sessionStorage.getItem("juuri"));
 }
+
+function ruokiJuuri() {
+    console.log("Juuren ruokkiminen");
+    // Oikeasti tämän pitäisi ensin vaihtaa sivulla näkyvä kuva,sitten vaihtaa seuraavaan näkymään
+}
