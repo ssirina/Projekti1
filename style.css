@@ -1,7 +1,10 @@
-body {background-color: coral;}
+body {
+  background-color: white;
+  padding-left: 15%;
+  padding-right: 15%;
+}
 
 .grid-container {
-    border: 1px solid;
     display: grid;
     grid-template-columns: auto auto;
     padding: 2%;
@@ -9,16 +12,16 @@ body {background-color: coral;}
   }
   
   .grid-item {
-    border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     font-size: 30px;
     height: 80vmin;
-    width: 90vmin;
+    max-width: 90vmin;
     text-align: center;
   }
 
   .image {
-      width: 90vmin;
+      max-height: 100%;
+      max-width: 100%;
   }
 
   #tervetulosivu {

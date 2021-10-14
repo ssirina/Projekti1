@@ -14,16 +14,19 @@
                     <div id="tervetulosivu">
                         <h3>Tervetuloa leipomaan!</h3>
                         <p>Tervetuloa tekemään herkullista hapanjuurileipää. Ensin kuitenkin haluaisimme, että kerrot kuka olet ja mikä on leipäjuuresi nimi.</p>
-                        <form>
-                            Leipurin nimi:
-                            <input type="text" id="leipuri">
-                            <br/>
-                            Juuren nimi:
-                            <input type="text" id="juuri">
-                            <br/>
-                        </form>
-                        <button onclick="tallennaTiedot()">Tallenna tiedot</button>
-                        <button onclick="tulostaTiedot()">Tulosta tiedot</button>
+                        <div id="form">
+                            <form>
+                                Leipurin nimi:
+                                <input type="text" id="leipuri">
+                                <br/>
+                                Juuren nimi:
+                                <input type="text" id="juuri">
+                                <br/>
+                            </form>
+                            <button onclick="tallennaTiedot()">Tallenna tiedot</button>
+                            <button onclick="tulostaTiedot()">Tulosta tiedot</button>
+                        </div>
+                        
                         <br>
                     </div>
                    
@@ -111,7 +114,7 @@
 
                 </div>
                 <div class="grid-item" >
-                <img class="image" alt="Muista kuvaus!!" src="https://www.hankikoira.fi/sites/default/files/rodut/2014_06_29_065_pieni.jpg">
+                <img class="image" id="image" alt="Muista kuvaus!!" src="images/1.JPG">
                     
                 </div>
               </div>
