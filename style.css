@@ -3,7 +3,7 @@ body {
   padding-left: 15%;
   padding-right: 15%;
 }
-
+/*
 .grid-container {
     display: grid;
     grid-template-columns: auto auto;
@@ -18,11 +18,25 @@ body {
     max-width: 90vmin;
     text-align: center;
   }
+*/
+
+  .container {
+    text-align: center;
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+
+  .col {
+    align-content: center;
+  }
 
   .image {
       max-height: 100%;
       max-width: 100%;
   }
+  
 
   #tervetulosivu {
     display: inline;

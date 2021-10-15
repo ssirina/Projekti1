@@ -10,12 +10,23 @@
         var juuri = document.getElementById("juuri").value;
 
         sessionStorage.setItem("leipuri", leipuri);
-        sessionStorage.setItem("juuri", juuri);
+        sessionStorage.setItem("juuri", juuri + "-juuri");
 
         document.getElementById("leipaValinta").style.display = "inline";
         document.getElementById("form").style.display = "none";
 
-        //Tänne vielä leipurin ja juuren nimen lisääminen kaikkialle?
+        vaihdaLeipuri();
+        vaihdaJuuri();
+    }
+
+    //Muuta kaikki dokumentin leipuri-sanat leipurin nimeksi, ja juuri-sanat juuren nimeksi
+
+    function vaihdaLeipuri() {
+        document.body.innerHTML = document.body.innerHTML.replace(/LEIPURI/g, sessionStorage.getItem("leipuri"));
+    }
+
+    function vaihdaJuuri() {
+        document.body.innerHTML = document.body.innerHTML.replace(/JUURI/g, sessionStorage.getItem("juuri"));
     }
 
     
@@ -41,7 +52,7 @@
     function naytaKuva(i) {
         console.log(sessionStorage.getItem("leipa"));
         console.log(sessionStorage.getItem("juuri"));
-        if(sessionStorage.getItem("leipa") == "vehna" || sessionStorage.getItem("leipä") == null) {
+        if(sessionStorage.getItem("leipa") == "vehna" || sessionStorage.getItem("leipa") == null) {
             document.getElementById("image").src = vehnaImgArray[i].src;
         } else {
             document.getElementById("image").src = sekaImgArray[i].src;
@@ -59,6 +70,7 @@
         function seuraava() {
             document.getElementById("aloitetaan").style.display = "none";
             document.getElementById("sekoitaTaikina").style.display = "inline";
+
         }
     }
 
@@ -74,6 +86,28 @@
             document.getElementById("autolyysi").style.display = "inline";
         }
     }
+
+// NELJÄS SIVU
+    function autolyysi() {
+        naytaKuva(5)
+            setTimeout(function() {seuraava()}, 1500);
+
+        function seuraava() {
+            document.getElementById("autolyysi").style.display = "none";
+            document.getElementById("taittele").style.display = "inline";
+        }
+    }
+
+    /*
+//VIIDES SIVU
+    function suolaa() {
+        naytaKuva(6)
+        setTimeout(function() {naytaKuva(7);}, 2000);
+        setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
+    }
+
+    function taittele()
+*/
 
 //KUVA-ARRAYT
 
