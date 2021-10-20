@@ -11,7 +11,7 @@
     <body>
         <h1>Hapanjuurileivontakokemus</h1>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div class="container">
             <div class="row">
@@ -55,65 +55,65 @@
                 <div id="aloitetaan">
                     <h3 >Hyvä valinta! Oletteko valmiina, LEIPURI ja JUURI?</h3>
                     <p>Ruoki ensin JUURI.</p>
-                    <button onclick="ruokiJuuri()">Ruoki JUURI</button>
+                    <button onclick="ruokiJuuri()" id="ruokiBtn">Ruoki JUURI</button>
                 </div>
                 
                 <!--Juuren nimi otsikkoon-->
                 <div id="sekoitaTaikina">
                     <h3>JUURI taitaa olla valmis!</h3>
                     <p>Nyt on aika sekoittaa taikina. Mutta älä vielä lisää suolaa!</p>
-                    <button onclick="sekoitaTaikina()">Sekoita taikina</button>
+                    <button onclick="sekoitaTaikina()" id="sekoitaBtn">Sekoita taikina</button>
                 </div>
                 
                 <div id="autolyysi">
                     <h3>Hyvältä näyttää, LEIPURI!</h3>
                     <p>Nyt vuorossa on autolyysi, jonka aikana taikina kehittyy. Peitä taikina tiiviiksi ja anna sen tekeytyä tunti.</p>
-                    <button onclick="autolyysi()">Anna tekeytyä</button>
+                    <button onclick="autolyysi()" id="autolyysiBtn">Anna tekeytyä</button>
                 </div>
                 
                 <!--Tämä voisi ehdottaa myös toista taittelua, kun eka on tehty, ja vaihtaa vain kuvia. Seuraavat vois myös -->
                 <div id="taittele">
                     <h3>Valmiilta näyttää!</h3>
                     <p>Lisää alkuun suola ja painele se taikinaan. Taittele sitten taikinaa puolen tunnin välein kaksi kertaa, jotta sen gluteeniverkko vahvistuu.</p>
-                    <button onclick="suolaa()">Lisää suola</button>
+                    <button onclick="suolaa()" id="suolaaBtn">Lisää suola</button>
                     <button onclick="taittele()" disabled=true id="taitteleBtn">Taittele taikinaa</button>
                 </div>
 
                 <div id="kohota">
                     <h3>Taikina näyttää hyvältä</h3>
                     <p>Anna sen nyt kohota 30 prosenttia</p>
-                    <button onclick="kohota()">Kohota taikina</button>
+                    <button onclick="kohota()" id="kohotaBtn">Kohota taikina</button>
                 </div>
 
                 <div id="muotoile">
                     <h3 >Taikina on kohonnut!</h3>
                     <p>Nyt on aika muotoilla leipä! Kun olet tehnyt ensimuotoilun ja antanut leivän levätä pöydällä puoli tuntia, taittele ja muotoile se pyöreäksi tai pitkulaiseksi ja laita kohotuskoriin.</p>
-                    <button onclick="muotoile()">Muotoile leipä</button>
+                    <button onclick="muotoile()" id="muotoileBtn">Muotoile leipä</button>
                 </div>
 
                 <div id="kylmalepo">
                     <h3 >Olet jo melkein valmis!</h3>
                     <p>Nyt varmista, että leivät alkavat kohota huoneen lämmössä ja siirrä ne sitten jääkaapin alimmalle hyllylle kylmälepoon. Leivät kohoavat hitaasti kylmälevossa ja niiden maku kehittyy entistä herkullisemmaksi!</p>
-                    <button onclick="kylmäLepo()">Siirrä kylmälepoon</button>
+                    <button onclick="kylmalepo()" id="kylmalepoBtn">Siirrä kylmälepoon</button>
                 </div>
                 
                 <div id="viilla">
                     <h3>Koristellaanpa leipä!</h3>
                     <p>Leipä on kehittynyt jääkaapissa ja ennen paistamista siihen voi tehdä kauniin koristekuvion. Ei muuta kuin terä käteen ja viiltämään!</p>
-                    <button onclick="viilla()">Koristele leipä</button>
+                    <button onclick="viilla()" id="viillaBtn">Koristele leipä</button>
                 </div>
                 
                 <div id="paista">
                     <h3 >Paistoa vaille valmis!</h3>
                     <p>Oletkin jo lämmittänyt uunin ja padan 250 asteeseen. Nyt ei muuta kuin leipä pataan ja pata uuniin. Ota leipä 15 minuutin kuluttua pois padasta ja paista ilman pataa 5 minuuttia 250 asteessa. Laske sitten uunin lämpötilaa 220 asteeseen ja paista vielä 20 minuuuttia lisää. Kun leipä on valmis, sen sisältä kuuluu pientä rapsahtelua ja sen pohja kumisee koputtaessa.</p>
-                    <button onclick="paista()">Paista leipä</button>
+                    <button onclick="paista()" id="paistaBtn">Paista leipä</button>
                 </div>
                 
                 <!--Teksti vaihtuu ennen kuvaa -->
                 <div id="valmis">
                     <h3 >Mikä herkullinen tuoksu täällä leijuukaan!</h3>
                     <p>Ja katso kuinka herkulliselta leipäsi näyttää. Malta kuitenkin vielä ainakin tunti, jotta leivän kosteus ehtii tasoittua.</p>
-                    <button onclick="tallennaLeipomus()">Ruoki juuri</button>
+                    <button onclick="tallennaLeipa()">Tallenna leipä</button>
                 </div>
                 
               </div>
