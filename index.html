@@ -23,20 +23,18 @@
                         <form>
                             Leipurin nimi:
                             <input type="text" id="leipuri">
-                            <br/>
+                            <br>
+                            <br>
                             Juuren nimi:
                             <input type="text" id="juuri">
-                            <br/>
+                            <br>
                         </form>
+                        <br>
                         <button onclick="tallennaTiedot()">Tallenna tiedot</button>
-                        <button onclick="tulostaTiedot()">Tulosta tiedot</button>
                     </div>
-                    
                     <br>
                 </div>
                
-                 <!--Tässä voisi sanoa, että "Leipuri Irina"-->
-
                 <div id="leipaValinta">
                     <h3>Hienoa, LEIPURI!</h3>
                     <p>Valitse ensin minkä leivän haluat leipoa.</p>
@@ -46,6 +44,7 @@
                         <option value="vehna">Vehnäleipä</option>
                         <option value="seka">Sekaleipä</option>
                     </select>
+                    <br>
                     <br>
                     <button onclick="tallennaValinta()">Valitse leipä</button>
 
@@ -113,12 +112,35 @@
                 <div id="valmis">
                     <h3 >Mikä herkullinen tuoksu täällä leijuukaan!</h3>
                     <p>Ja katso kuinka herkulliselta leipäsi näyttää. Malta kuitenkin vielä ainakin tunti, jotta leivän kosteus ehtii tasoittua.</p>
-                    <button onclick="tallennaLeipa()">Tallenna leipä</button>
+                    <button onclick="tallennaLeipa()" id="tallennaBtn">Tallenna leipä</button>
+                    <button onclick="tulostaLeivat()">Tarkista mitä on leivottu</button>
+                </div>
+                <br>
+                <br>
+                <div id="tulostaulukkoDIV">
+                    <table class= "table table-bordered" id="tulostaulukko">
+                        <thead class="thead">
+                            <tr>
+                                <th scope="col">Leivät</th>
+                                <th scope="col">Määrä</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vehnäleipä</td>
+                                <td id="vehnaleivat"></td>
+                            </tr>
+                            <tr>
+                                <td>Sekaleipä</td>
+                                <td id="sekaleivat"></td>
+                            </tr>
+                        </tbody>
+                      </table>
                 </div>
                 
               </div>
               <div class="col">
-                <img class="image" id="image" alt="Muista kuvaus!!" src="images/1.JPG">
+                <img class="image" id="image" alt="Kuva hapanjuurileivontaprosessista" src="images/1.JPG">
               </div>
             </div>
         </div>

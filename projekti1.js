@@ -1,267 +1,302 @@
-
-
-//Tällä vaihdetaan sivustolla näytettävä kuva, hyödynnetään muissa funktioissa
-
-
 //ENSIMMÄINEN SIVU
 
-    function tallennaTiedot() {
-        var leipuri = document.getElementById("leipuri").value;
-        var juuri = document.getElementById("juuri").value;
+// Tallennetaan leipurin ja juuren nimi sessionStoragea hyödyntäen
+function tallennaTiedot() {
+    var leipuri = document.getElementById("leipuri").value;
+    var juuri = document.getElementById("juuri").value;
 
-        sessionStorage.setItem("leipuri", leipuri);
-        sessionStorage.setItem("juuri", juuri + "-juuri");
+    sessionStorage.setItem("leipuri", leipuri);
+    sessionStorage.setItem("juuri", juuri + "-juuri");
 
-        document.getElementById("leipaValinta").style.display = "inline";
-        document.getElementById("form").style.display = "none";
+    document.getElementById("leipaValinta").style.display = "inline";
+    document.getElementById("form").style.display = "none";
 
-        document.getElementsByClassName("progress-bar")[0].style.width = "5%";
+    document.getElementsByClassName("progress-bar")[0].style.width = "5%";
 
-        vaihdaLeipuri();
-        vaihdaJuuri();
-    }
-
-    //Muuta kaikki dokumentin leipuri-sanat leipurin nimeksi, ja juuri-sanat juuren nimeksi
-
-    function vaihdaLeipuri() {
-        document.body.innerHTML = document.body.innerHTML.replace(/LEIPURI/g, sessionStorage.getItem("leipuri"));
-    }
-
-    function vaihdaJuuri() {
-        document.body.innerHTML = document.body.innerHTML.replace(/JUURI/g, sessionStorage.getItem("juuri"));
-    }
-
-    
-    //TÄMÄ SAATTAA OLLA TURHA`???
-    function tulostaTiedot() {
-        console.log("Leipurin nimi: " + sessionStorage.getItem("leipuri"));
-        console.log("Juuren nimi: " + sessionStorage.getItem("juuri"));
-        document.getElementsByClassName("progress-bar")[0].style.width = "50%";
+    vaihdaLeipuri();
+    vaihdaJuuri();
 }
 
-    //Funktio, valinnantallennusnappiin, jolla siirrytään myös seuraavaan näkymään
-    function tallennaValinta() {
-        var leipa = document.getElementById("leivat").value;
-        sessionStorage.setItem("leipa", leipa);
-        console.log("Leivän nimi: " + sessionStorage.getItem("leipä"));
+//Muuta kaikki dokumentin leipuri-sanat leipurin nimeksi, ja juuri-sanat juuren nimeksi
 
-        document.getElementsByClassName("progress-bar")[0].style.width = "10%";
+function vaihdaLeipuri() {
+    document.body.innerHTML = document.body.innerHTML.replace(/LEIPURI/g, sessionStorage.getItem("leipuri"));
+}
+
+function vaihdaJuuri() {
+    document.body.innerHTML = document.body.innerHTML.replace(/JUURI/g, sessionStorage.getItem("juuri"));
+}
+
+//Funktio, valinnantallennusnappiin, jolla siirrytään myös seuraavaan näkymään
+
+function tallennaValinta() {
+    var leipa = document.getElementById("leivat").value;
+    sessionStorage.setItem("leipa", leipa);
+    console.log("Leivän nimi: " + sessionStorage.getItem("leipa"));
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "10%";
 
 
-        document.getElementById("tervetulosivu").style.display ="none";
-        document.getElementById("leipaValinta").style.display = "none";
-        document.getElementById("aloitetaan").style.display = "inline";
+    document.getElementById("tervetulosivu").style.display ="none";
+    document.getElementById("leipaValinta").style.display = "none";
+    document.getElementById("aloitetaan").style.display = "inline";
+}
+
+//Tällä vaihdetaan sivustolla näytettävä kuva, hyödynnetään muissa funktioissa
+//vaihdetaan kuva sen perusteella mikä leipä on valittu
+
+function naytaKuva(i) {
+    console.log(sessionStorage.getItem("leipa"));
+    console.log(sessionStorage.getItem("juuri"));
+    if(sessionStorage.getItem("leipa") == "vehna" || sessionStorage.getItem("leipa") == null) {
+        document.getElementById("image").src = vehnaImgArray[i].src;
+    } else {
+        document.getElementById("image").src = sekaImgArray[i].src;
     }
-
-    //vaihdetaan kuva sen perusteella mikä leipä on valittu
-    function naytaKuva(i) {
-        console.log(sessionStorage.getItem("leipa"));
-        console.log(sessionStorage.getItem("juuri"));
-        if(sessionStorage.getItem("leipa") == "vehna" || sessionStorage.getItem("leipa") == null) {
-            document.getElementById("image").src = vehnaImgArray[i].src;
-        } else {
-            document.getElementById("image").src = sekaImgArray[i].src;
-        }
-    }
+}
 
 // TOINEN SIVU
-    // Funktio juuren ruokintanappiin
-    function ruokiJuuri() {
-        document.getElementById("ruokiBtn").disabled=true;
 
-        naytaKuva(1)
-        setTimeout(function() {naytaKuva(2);}, 1000);
-        setTimeout(function() {seuraava()}, 2000);
+function ruokiJuuri() {
+    document.getElementById("ruokiBtn").disabled=true;
 
-        function seuraava() {
-            document.getElementById("aloitetaan").style.display = "none";
-            document.getElementById("sekoitaTaikina").style.display = "inline";
+    naytaKuva(1)
+    setTimeout(function() {naytaKuva(2);}, 1000);
+    setTimeout(function() {seuraava()}, 2000);
 
-        }
-        document.getElementsByClassName("progress-bar")[0].style.width = "15%";
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "20%";}, 1000);
+    function seuraava() {
+        document.getElementById("aloitetaan").style.display = "none";
+        document.getElementById("sekoitaTaikina").style.display = "inline";
 
     }
+    document.getElementsByClassName("progress-bar")[0].style.width = "15%";
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "20%";}, 1000);
+
+}
 
 //KOLMAS SIVU
-    function sekoitaTaikina() {
-        document.getElementById("sekoitaBtn").disabled=true;
 
-        naytaKuva(3)
-        setTimeout(function() {naytaKuva(4);}, 1000);
-        setTimeout(function() {seuraava()}, 2000);
+function sekoitaTaikina() {
+    document.getElementById("sekoitaBtn").disabled=true;
 
-        function seuraava() {
-            document.getElementById("sekoitaTaikina").style.display = "none";
-            document.getElementById("autolyysi").style.display = "inline";
-        }
+    naytaKuva(3)
+    setTimeout(function() {naytaKuva(4);}, 1000);
+    setTimeout(function() {seuraava()}, 2000);
 
-        document.getElementsByClassName("progress-bar")[0].style.width = "25%";
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "30%";}, 1000);
-
+    function seuraava() {
+        document.getElementById("sekoitaTaikina").style.display = "none";
+        document.getElementById("autolyysi").style.display = "inline";
     }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "25%";
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "30%";}, 1000);
+
+}
 
 // NELJÄS SIVU
-    function autolyysi() {
-        document.getElementById("autolyysiBtn").disabled=true;
 
-        naytaKuva(5)
-        setTimeout(function() {seuraava()}, 1000);
+function autolyysi() {
+    document.getElementById("autolyysiBtn").disabled=true;
 
-        function seuraava() {
-            document.getElementById("autolyysi").style.display = "none";
-            document.getElementById("taittele").style.display = "inline";
-        }
+    naytaKuva(5)
+    setTimeout(function() {seuraava()}, 1000);
 
-        document.getElementsByClassName("progress-bar")[0].style.width = "35%";
-
+    function seuraava() {
+        document.getElementById("autolyysi").style.display = "none";
+        document.getElementById("taittele").style.display = "inline";
     }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "35%";
+
+}
 
     
 //VIIDES SIVU
-    function suolaa() {
-        document.getElementById("suolaaBtn").disabled=true;
-        naytaKuva(6)
-        setTimeout(function() {naytaKuva(7);}, 1000);
-        setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
-        document.getElementsByClassName("progress-bar")[0].style.width = "40%";
 
-    }
+function suolaa() {
+    document.getElementById("suolaaBtn").disabled=true;
+    naytaKuva(6)
+    setTimeout(function() {naytaKuva(7);}, 1000);
+    setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
+    document.getElementsByClassName("progress-bar")[0].style.width = "40%";
 
-    // tarkistetaan kuinka monta taittelua on takana ja taitellaan kaksi kertaa
-        
-    //kerätään taitteluiden määrä (count), kahden jälkeen pitäisi siirtyä seuraavaan
-    var count = 0;
-    function taittele() {
-        if(count < 2) {
-            document.getElementById("taitteleBtn").disabled=true;
-            naytaKuva(8)
-            setTimeout(function() {naytaKuva(9);}, 1000);
-            setTimeout(function() {naytaKuva(10);}, 2000);
-            if(count < 1) {
-                setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
-                document.getElementsByClassName("progress-bar")[0].style.width = "45%";
-                }
-            }
-            count+=1;
-            if(count == 2) {
-                setTimeout(function() {seuraava()}, 3000);
-                document.getElementsByClassName("progress-bar")[0].style.width = "50%";
+}
 
-                function seuraava() {
-                    document.getElementById("taittele").style.display = "none";
-                    document.getElementById("kohota").style.display = "inline";
+// tarkistetaan kuinka monta taittelua on takana ja taitellaan kaksi kertaa
+// kerätään taitteluiden määrä (count), kahden jälkeen pitäisi siirtyä seuraavaan
+
+var count = 0;
+function taittele() {
+    if(count < 2) {
+        document.getElementById("taitteleBtn").disabled=true;
+        naytaKuva(8)
+        setTimeout(function() {naytaKuva(9);}, 1000);
+        setTimeout(function() {naytaKuva(10);}, 2000);
+        if(count < 1) {
+            setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
+            document.getElementsByClassName("progress-bar")[0].style.width = "45%";
             }
         }
+        count+=1;
+        if(count == 2) {
+            setTimeout(function() {seuraava()}, 3000);
+            document.getElementsByClassName("progress-bar")[0].style.width = "50%";
+
+            function seuraava() {
+                document.getElementById("taittele").style.display = "none";
+                document.getElementById("kohota").style.display = "inline";
+        }
     }
+}
 
 // KUUDES SIVU
 
-    function kohota() {
-        document.getElementById("kohotaBtn").disabled=true;
+function kohota() {
+    document.getElementById("kohotaBtn").disabled=true;
 
-        naytaKuva(11)
-        setTimeout(function() {seuraava()}, 1000);
+    naytaKuva(11)
+    setTimeout(function() {seuraava()}, 1000);
 
-        function seuraava() {
-            document.getElementById("kohota").style.display = "none";
-            document.getElementById("muotoile").style.display = "inline";
-        }
-
-        document.getElementsByClassName("progress-bar")[0].style.width = "55%";
+    function seuraava() {
+        document.getElementById("kohota").style.display = "none";
+        document.getElementById("muotoile").style.display = "inline";
     }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "55%";
+}
 
 // SEITSEMÄS SIVU
     
-    function muotoile() {
-        document.getElementById("muotoileBtn").disabled=true;
+function muotoile() {
+    document.getElementById("muotoileBtn").disabled=true;
 
-        naytaKuva(12)
-        setTimeout(function() {naytaKuva(13);}, 1000);
-        setTimeout(function() {naytaKuva(14);}, 2000);
-        setTimeout(function() {seuraava()}, 3000);
+    naytaKuva(12)
+    setTimeout(function() {naytaKuva(13);}, 1000);
+    setTimeout(function() {naytaKuva(14);}, 2000);
+    setTimeout(function() {seuraava()}, 3000);
 
-        function seuraava() {
-            document.getElementById("muotoile").style.display = "none";
-            document.getElementById("kylmalepo").style.display = "inline";
-        }
-
-        document.getElementsByClassName("progress-bar")[0].style.width = "60%";
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "65%";}, 1000);
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "70%";}, 2000);
-
-
+    function seuraava() {
+        document.getElementById("muotoile").style.display = "none";
+        document.getElementById("kylmalepo").style.display = "inline";
     }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "60%";
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "65%";}, 1000);
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "70%";}, 2000);
+}
  
 // KAHDEKSAS SIVU
 
-    function kylmalepo() {
-        document.getElementById("kylmalepoBtn").disabled=true;
+function kylmalepo() {
+    document.getElementById("kylmalepoBtn").disabled=true;
 
-        naytaKuva(15)
-        setTimeout(function() {seuraava()}, 1000);
+    naytaKuva(15)
+    setTimeout(function() {seuraava()}, 1000);
 
-        function seuraava() {
-            document.getElementById("kylmalepo").style.display = "none";
-            document.getElementById("viilla").style.display = "inline";
-        }
-
-        document.getElementsByClassName("progress-bar")[0].style.width = "75%";
+    function seuraava() {
+        document.getElementById("kylmalepo").style.display = "none";
+        document.getElementById("viilla").style.display = "inline";
     }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "75%";
+}
 
 
 // YHDEKSÄS SIVU
-    function viilla() {
-        document.getElementById("viillaBtn").disabled=true;
 
-        naytaKuva(16)
-        setTimeout(function() {naytaKuva(17);}, 1000);
-        setTimeout(function() {naytaKuva(18);}, 2000);
-        setTimeout(function() {seuraava()}, 3000);
-        
+function viilla() {
+    document.getElementById("viillaBtn").disabled=true;
 
-        function seuraava() {
-            document.getElementById("viilla").style.display = "none";
-            document.getElementById("paista").style.display = "inline";
-        }
+    naytaKuva(16)
+    setTimeout(function() {naytaKuva(17);}, 1000);
+    setTimeout(function() {naytaKuva(18);}, 2000);
+    setTimeout(function() {seuraava()}, 3000);
+    
 
-        document.getElementsByClassName("progress-bar")[0].style.width = "80%";
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "85%";}, 1000);
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "90%";}, 2000);
+    function seuraava() {
+        document.getElementById("viilla").style.display = "none";
+        document.getElementById("paista").style.display = "inline";
     }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "80%";
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "85%";}, 1000);
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "90%";}, 2000);
+}
 
 
 // KYMMENES SIVU
 
-    function paista() {
-        document.getElementById("paistaBtn").disabled=true;
+function paista() {
+    document.getElementById("paistaBtn").disabled=true;
 
-        naytaKuva(19)
-        setTimeout(function() {naytaKuva(20);}, 1000);
-        setTimeout(function() {naytaKuva(21);}, 2000);
-        setTimeout(function() {seuraava()}, 3000);
-        
+    naytaKuva(19)
+    setTimeout(function() {naytaKuva(20);}, 1000);
+    setTimeout(function() {naytaKuva(21);}, 2000);
+    setTimeout(function() {seuraava()}, 3000);
+    
 
-        function seuraava() {
-            document.getElementById("paista").style.display = "none";
-            document.getElementById("valmis").style.display = "inline";
+    function seuraava() {
+        document.getElementById("paista").style.display = "none";
+        document.getElementById("valmis").style.display = "inline";
+    }
+
+    document.getElementsByClassName("progress-bar")[0].style.width = "93%";
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "96%";}, 1000);
+    setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "100%";}, 2000);
+}
+
+
+
+// YHDESTOISTA SIVU
+// Kun leipä on valmis, tallennetaan leipien määrä local storageen, josta niiden määrä voidaan hakea.
+
+function tallennaLeipa() {
+    document.getElementById("tallennaBtn").disabled=true;
+
+    if(sessionStorage.getItem("leipa") == "vehna") {
+        if(localStorage.getItem("vehnät") == null) {
+            localStorage.setItem("vehnät", "1");
+        } else {
+            var uusVehnat = parseInt(localStorage.getItem("vehnät")) + 1;
+            console.log(uusVehnat);
+            localStorage.setItem("vehnät", uusVehnat);
         }
-
-        document.getElementsByClassName("progress-bar")[0].style.width = "93%";
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "96%";}, 1000);
-        setTimeout(function() {document.getElementsByClassName("progress-bar")[0].style.width = "100%";}, 2000);
+    } else if(sessionStorage.getItem("leipa") == "seka") {
+        if(localStorage.getItem("sekat") == null) {
+            localStorage.setItem("sekat", "1");
+        } else {
+            var uusSekat = parseInt(localStorage.getItem("sekat")) + 1;
+            console.log(uusVehnat);
+            localStorage.setItem("sekat", uusSekat);
+        }
     }
 
+    //asetetaan "0", jos yhtään leipää ei ole leivottu (muuten näkyisi tulostettaessa "null")
 
-
-// YHDESTOISTA SIVU - Tänne local storageen tallennus
-
-/*
-    function tallennaLeipa() {
-        localStorage.setItem
+    if(localStorage.getItem("vehnät") == null) {
+        localStorage.setItem("vehnät", "0");
     }
+    if(localStorage.getItem("sekat") == null) {
+        localStorage.setItem("sekat", "0");
+    }
+}
 
-*/
+// näytetään tehtyjen leipien määrä taulukossa:
+function tulostaLeivat() {
+    document.getElementById("tulostaulukkoDIV").style.display = "inline";
+
+    console.log("Vehnäleipiä: " + localStorage.getItem("vehnät"));
+    console.log("Sekaleipiä: " + localStorage.getItem("sekat"));
+
+    document.getElementById("vehnaleivat").innerHTML = localStorage.getItem("vehnät");
+    document.getElementById("sekaleivat").innerHTML = localStorage.getItem("sekat");
+
+    
+}
+    
+
+
+
 
 //KUVA-ARRAYT
 

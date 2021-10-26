@@ -37,7 +37,6 @@ body {
       max-width: 100%;
   }
   
-
   #tervetulosivu {
     display: inline;
   }
@@ -88,4 +87,14 @@ body {
   
   #valmis {
     display: none;
+  }
+
+  #tulostaulukkoDIV {
+    display: none;
+  }
+
+  #tulostaulukko {
+    border-style: solid;
+    border-color: black;
+    border: 1px;
   }
