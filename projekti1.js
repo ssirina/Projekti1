@@ -38,7 +38,6 @@ function tallennaTiedot() {
         vaihdaLeipuri();
         vaihdaJuuri();
     }
-
 }
     
 
@@ -70,11 +69,14 @@ function tallennaValinta() {
 //Hyödynnetään muissa funktioissa
 //vaihdetaan kuva sen perusteella mikä leipä on valittu
 
-function naytaKuva(i) {
+var i = 1;
+function naytaKuva() {
     if(sessionStorage.getItem("leipa") == "vehna" || sessionStorage.getItem("leipa") == null) {
         document.getElementById("image").src = vehnaImgArray[i].src;
+        i++;
     } else {
         document.getElementById("image").src = sekaImgArray[i].src;
+        i++;
     }
 }
 
@@ -84,8 +86,8 @@ function naytaKuva(i) {
 function ruokiJuuri() {
     document.getElementById("ruokiBtn").disabled=true;
 
-    naytaKuva(1)
-    setTimeout(function() {naytaKuva(2);}, 1000);
+    naytaKuva()
+    setTimeout(function() {naytaKuva();}, 1000);
     setTimeout(function() {seuraava()}, 2000);
 
     function seuraava() {
@@ -104,8 +106,8 @@ function ruokiJuuri() {
 function sekoitaTaikina() {
     document.getElementById("sekoitaBtn").disabled=true;
 
-    naytaKuva(3)
-    setTimeout(function() {naytaKuva(4);}, 1000);
+    naytaKuva()
+    setTimeout(function() {naytaKuva();}, 1000);
     setTimeout(function() {seuraava()}, 2000);
 
     function seuraava() {
@@ -124,7 +126,7 @@ function sekoitaTaikina() {
 function autolyysi() {
     document.getElementById("autolyysiBtn").disabled=true;
 
-    naytaKuva(5)
+    naytaKuva()
     setTimeout(function() {seuraava()}, 1000);
 
     function seuraava() {
@@ -142,8 +144,8 @@ function autolyysi() {
 
 function suolaa() {
     document.getElementById("suolaaBtn").disabled=true;
-    naytaKuva(6)
-    setTimeout(function() {naytaKuva(7);}, 1000);
+    naytaKuva()
+    setTimeout(function() {naytaKuva();}, 1000);
     setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
     document.getElementsByClassName("progress-bar")[0].style.width = "40%";
 
@@ -156,9 +158,9 @@ var count = 0;
 function taittele() {
     if(count < 2) {
         document.getElementById("taitteleBtn").disabled=true;
-        naytaKuva(8)
-        setTimeout(function() {naytaKuva(9);}, 1000);
-        setTimeout(function() {naytaKuva(10);}, 2000);
+        naytaKuva()
+        setTimeout(function() {naytaKuva();}, 1000);
+        setTimeout(function() {naytaKuva();}, 2000);
         if(count < 1) {
             setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2500);
             document.getElementsByClassName("progress-bar")[0].style.width = "45%";
@@ -182,7 +184,7 @@ function taittele() {
 function kohota() {
     document.getElementById("kohotaBtn").disabled=true;
 
-    naytaKuva(11)
+    naytaKuva()
     setTimeout(function() {seuraava()}, 1000);
 
     function seuraava() {
@@ -199,9 +201,9 @@ function kohota() {
 function muotoile() {
     document.getElementById("muotoileBtn").disabled=true;
 
-    naytaKuva(12)
-    setTimeout(function() {naytaKuva(13);}, 1000);
-    setTimeout(function() {naytaKuva(14);}, 2000);
+    naytaKuva()
+    setTimeout(function() {naytaKuva();}, 1000);
+    setTimeout(function() {naytaKuva();}, 2000);
     setTimeout(function() {seuraava()}, 3000);
 
     function seuraava() {
@@ -220,7 +222,7 @@ function muotoile() {
 function kylmalepo() {
     document.getElementById("kylmalepoBtn").disabled=true;
 
-    naytaKuva(15)
+    naytaKuva()
     setTimeout(function() {seuraava()}, 1000);
 
     function seuraava() {
@@ -238,9 +240,9 @@ function kylmalepo() {
 function viilla() {
     document.getElementById("viillaBtn").disabled=true;
 
-    naytaKuva(16)
-    setTimeout(function() {naytaKuva(17);}, 1000);
-    setTimeout(function() {naytaKuva(18);}, 2000);
+    naytaKuva()
+    setTimeout(function() {naytaKuva();}, 1000);
+    setTimeout(function() {naytaKuva();}, 2000);
     setTimeout(function() {seuraava()}, 3000);
     
 
@@ -262,8 +264,8 @@ function paista() {
     document.getElementById("paistaBtn").disabled=true;
 
     naytaKuva(19)
-    setTimeout(function() {naytaKuva(20);}, 1000);
-    setTimeout(function() {naytaKuva(21);}, 2000);
+    setTimeout(function() {naytaKuva();}, 1000);
+    setTimeout(function() {naytaKuva();}, 2000);
     setTimeout(function() {seuraava()}, 3000);
     
 
@@ -355,27 +357,33 @@ vehnaImgArray[9].src = "images/16.JPG";
 vehnaImgArray[10] = new Image();
 vehnaImgArray[10].src = "images/18.JPG";
 vehnaImgArray[11] = new Image();
-vehnaImgArray[11].src = "images/21.JPG";
+vehnaImgArray[11].src = "images/15.JPG";
 vehnaImgArray[12] = new Image();
-vehnaImgArray[12].src = "images/23.JPG";
+vehnaImgArray[12].src = "images/16.JPG";
 vehnaImgArray[13] = new Image();
-vehnaImgArray[13].src = "images/24.JPG";
+vehnaImgArray[13].src = "images/18.JPG";
 vehnaImgArray[14] = new Image();
-vehnaImgArray[14].src = "images/25.JPG";
+vehnaImgArray[14].src = "images/21.JPG";
 vehnaImgArray[15] = new Image();
-vehnaImgArray[15].src = "images/27.JPG";
+vehnaImgArray[15].src = "images/23.JPG";
 vehnaImgArray[16] = new Image();
-vehnaImgArray[16].src = "images/28.JPG";
+vehnaImgArray[16].src = "images/24.JPG";
 vehnaImgArray[17] = new Image();
-vehnaImgArray[17].src = "images/29.JPG";
+vehnaImgArray[17].src = "images/25.JPG";
 vehnaImgArray[18] = new Image();
-vehnaImgArray[18].src = "images/30.JPG";
+vehnaImgArray[18].src = "images/27.JPG";
 vehnaImgArray[19] = new Image();
-vehnaImgArray[19].src = "images/31.JPG";
+vehnaImgArray[19].src = "images/28.JPG";
 vehnaImgArray[20] = new Image();
-vehnaImgArray[20].src = "images/32.JPG";
+vehnaImgArray[20].src = "images/29.JPG";
 vehnaImgArray[21] = new Image();
-vehnaImgArray[21].src = "images/33.JPG";
+vehnaImgArray[21].src = "images/30.JPG";
+vehnaImgArray[22] = new Image();
+vehnaImgArray[22].src = "images/31.JPG";
+vehnaImgArray[23] = new Image();
+vehnaImgArray[23].src = "images/32.JPG";
+vehnaImgArray[24] = new Image();
+vehnaImgArray[24].src = "images/33.JPG";
 
 
 var sekaImgArray = new Array();
@@ -402,25 +410,31 @@ sekaImgArray[9].src = "images/19.JPG";
 sekaImgArray[10] = new Image();
 sekaImgArray[10].src = "images/20.JPG";
 sekaImgArray[11] = new Image();
-sekaImgArray[11].src = "images/22.JPG";
+sekaImgArray[11].src = "images/13.JPG";
 sekaImgArray[12] = new Image();
-sekaImgArray[12].src = "images/26.JPG";
+sekaImgArray[12].src = "images/19.JPG";
 sekaImgArray[13] = new Image();
-sekaImgArray[13].src = "images/24.JPG";
+sekaImgArray[13].src = "images/20.JPG";
 sekaImgArray[14] = new Image();
-sekaImgArray[14].src = "images/25.JPG";
+sekaImgArray[14].src = "images/22.JPG";
 sekaImgArray[15] = new Image();
-sekaImgArray[15].src = "images/27.JPG";
+sekaImgArray[15].src = "images/26.JPG";
 sekaImgArray[16] = new Image();
-sekaImgArray[16].src = "images/28.JPG";
+sekaImgArray[16].src = "images/24.JPG";
 sekaImgArray[17] = new Image();
-sekaImgArray[17].src = "images/29.JPG";
+sekaImgArray[17].src = "images/25.JPG";
 sekaImgArray[18] = new Image();
-sekaImgArray[18].src = "images/30.JPG";
+sekaImgArray[18].src = "images/27.JPG";
 sekaImgArray[19] = new Image();
-sekaImgArray[19].src = "images/31.JPG";
+sekaImgArray[19].src = "images/28.JPG";
 sekaImgArray[20] = new Image();
-sekaImgArray[20].src = "images/32.JPG";
+sekaImgArray[20].src = "images/29.JPG";
 sekaImgArray[21] = new Image();
-sekaImgArray[21].src = "images/33.JPG";
+sekaImgArray[21].src = "images/30.JPG";
+sekaImgArray[22] = new Image();
+sekaImgArray[22].src = "images/31.JPG";
+sekaImgArray[23] = new Image();
+sekaImgArray[23].src = "images/32.JPG";
+sekaImgArray[24] = new Image();
+sekaImgArray[24].src = "images/33.JPG";
     
