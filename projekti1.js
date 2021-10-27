@@ -21,6 +21,7 @@ function tarkastus() {
 }
 
 // Ensin Validointi-funktion hyödyntäminen, jos ok, tallennetaan leipurin ja juuren nimi sessionStoragea hyödyntäen
+
 function tallennaTiedot() {
     tarkastus();    
     if(nimetOk == true) {
