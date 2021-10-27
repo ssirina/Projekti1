@@ -9,7 +9,14 @@ function tarkastus() {
     if (nimi !== "" || juuri !== "") {
         nimetOk = true;
     } else {
-        alert("Kerro ensin nimesi ja leipäjuuresi nimi!")
+        if(nimi == "") {
+            document.getElementById("leipuri").style.border = "solid red";
+        }
+        if(juuri == "") {
+            document.getElementById("juuri").style.border = "solid red";
+        }
+        alert("Kerro ensin nimesi ja leipäjuuresi nimi!");
+       
     }
 }
 
