@@ -322,8 +322,11 @@ function tulostaLeivat() {
         document.getElementById("tulostaBtn").disabled = true;
     }
 }
-    
 
+function alkuun() {
+    location.reload();
+}
+    
 
 
 //KUVA-ARRAYT
