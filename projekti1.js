@@ -1,21 +1,39 @@
 //ENSIMMÄINEN SIVU
 
-// Tallennetaan leipurin ja juuren nimi sessionStoragea hyödyntäen
-function tallennaTiedot() {
-    var leipuri = document.getElementById("leipuri").value;
+//Validoidaan formi (oma nimi ja juuren nimi)
+
+var nimetOk = false;
+function tarkastus() {
+    var nimi = document.getElementById("leipuri").value;
     var juuri = document.getElementById("juuri").value;
-
-    sessionStorage.setItem("leipuri", leipuri);
-    sessionStorage.setItem("juuri", juuri + "-juuri");
-
-    document.getElementById("leipaValinta").style.display = "inline";
-    document.getElementById("form").style.display = "none";
-
-    document.getElementsByClassName("progress-bar")[0].style.width = "5%";
-
-    vaihdaLeipuri();
-    vaihdaJuuri();
+    if (nimi !== "" || juuri !== "") {
+        nimetOk = true;
+    } else {
+        alert("Kerro ensin nimesi ja leipäjuuresi nimi!")
+    }
 }
+
+// Ensin Validointi-funktion hyödyntäminen, jos ok, tallennetaan leipurin ja juuren nimi sessionStoragea hyödyntäen
+function tallennaTiedot() {
+    tarkastus();    
+    if(nimetOk == true) {
+        var leipuri = document.getElementById("leipuri").value;
+        var juuri = document.getElementById("juuri").value;
+
+        sessionStorage.setItem("leipuri", leipuri);
+        sessionStorage.setItem("juuri", juuri + "-juuri");
+
+        document.getElementById("leipaValinta").style.display = "inline";
+        document.getElementById("form").style.display = "none";
+
+        document.getElementsByClassName("progress-bar")[0].style.width = "5%";
+
+        vaihdaLeipuri();
+        vaihdaJuuri();
+    }
+
+}
+    
 
 //Muuta kaikki dokumentin leipuri-sanat leipurin nimeksi, ja juuri-sanat juuren nimeksi
 
@@ -27,12 +45,11 @@ function vaihdaJuuri() {
     document.body.innerHTML = document.body.innerHTML.replace(/JUURI/g, sessionStorage.getItem("juuri"));
 }
 
-//Funktio, valinnantallennusnappiin, jolla siirrytään myös seuraavaan näkymään
+//Tallennetaan leipävalinta sessionStorageen, siirretään progress baria ja siirrytään seuraavaan näkymään
 
 function tallennaValinta() {
     var leipa = document.getElementById("leivat").value;
     sessionStorage.setItem("leipa", leipa);
-    console.log("Leivän nimi: " + sessionStorage.getItem("leipa"));
 
     document.getElementsByClassName("progress-bar")[0].style.width = "10%";
 
@@ -42,12 +59,11 @@ function tallennaValinta() {
     document.getElementById("aloitetaan").style.display = "inline";
 }
 
-//Tällä vaihdetaan sivustolla näytettävä kuva, hyödynnetään muissa funktioissa
+// SIVUSTOLLA NÄKYVÄN KUVAN VAIHTAMINEN
+//Hyödynnetään muissa funktioissa
 //vaihdetaan kuva sen perusteella mikä leipä on valittu
 
 function naytaKuva(i) {
-    console.log(sessionStorage.getItem("leipa"));
-    console.log(sessionStorage.getItem("juuri"));
     if(sessionStorage.getItem("leipa") == "vehna" || sessionStorage.getItem("leipa") == null) {
         document.getElementById("image").src = vehnaImgArray[i].src;
     } else {
@@ -56,6 +72,7 @@ function naytaKuva(i) {
 }
 
 // TOINEN SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function ruokiJuuri() {
     document.getElementById("ruokiBtn").disabled=true;
@@ -75,6 +92,7 @@ function ruokiJuuri() {
 }
 
 //KOLMAS SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function sekoitaTaikina() {
     document.getElementById("sekoitaBtn").disabled=true;
@@ -94,6 +112,7 @@ function sekoitaTaikina() {
 }
 
 // NELJÄS SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function autolyysi() {
     document.getElementById("autolyysiBtn").disabled=true;
@@ -107,11 +126,12 @@ function autolyysi() {
     }
 
     document.getElementsByClassName("progress-bar")[0].style.width = "35%";
-
 }
 
     
 //VIIDES SIVU
+
+// Nappi pois käytöstä, kuvien vaihto, toisen napin enablointi, progress-bar etenee
 
 function suolaa() {
     document.getElementById("suolaaBtn").disabled=true;
@@ -123,7 +143,7 @@ function suolaa() {
 }
 
 // tarkistetaan kuinka monta taittelua on takana ja taitellaan kaksi kertaa
-// kerätään taitteluiden määrä (count), kahden jälkeen pitäisi siirtyä seuraavaan
+// kerätään taitteluiden määrä (count), kahden jälkeen pitäisi siirtyä seuraavaan diviin. Tätä hyödynnetään myös progress barin etenemisessä.
 
 var count = 0;
 function taittele() {
@@ -133,7 +153,7 @@ function taittele() {
         setTimeout(function() {naytaKuva(9);}, 1000);
         setTimeout(function() {naytaKuva(10);}, 2000);
         if(count < 1) {
-            setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2000);
+            setTimeout(function() {document.getElementById("taitteleBtn").disabled=false;}, 2500);
             document.getElementsByClassName("progress-bar")[0].style.width = "45%";
             }
         }
@@ -150,6 +170,7 @@ function taittele() {
 }
 
 // KUUDES SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function kohota() {
     document.getElementById("kohotaBtn").disabled=true;
@@ -166,6 +187,7 @@ function kohota() {
 }
 
 // SEITSEMÄS SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
     
 function muotoile() {
     document.getElementById("muotoileBtn").disabled=true;
@@ -186,6 +208,7 @@ function muotoile() {
 }
  
 // KAHDEKSAS SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function kylmalepo() {
     document.getElementById("kylmalepoBtn").disabled=true;
@@ -203,6 +226,7 @@ function kylmalepo() {
 
 
 // YHDEKSÄS SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function viilla() {
     document.getElementById("viillaBtn").disabled=true;
@@ -225,6 +249,7 @@ function viilla() {
 
 
 // KYMMENES SIVU
+// Nappi pois käytöstä, kuvien vaihto, seuraavan Divin näyttäminen ja olemassaolevan piilotus, progress-bar etenee
 
 function paista() {
     document.getElementById("paistaBtn").disabled=true;
@@ -248,7 +273,7 @@ function paista() {
 
 
 // YHDESTOISTA SIVU
-// Kun leipä on valmis, tallennetaan leipien määrä local storageen, josta niiden määrä voidaan hakea.
+// Kun leipä on valmis, tallennetaan leipien määrä local storageen, josta niiden määrä voidaan hakea taulukkoon
 
 function tallennaLeipa() {
     document.getElementById("tallennaBtn").disabled=true;
@@ -258,7 +283,6 @@ function tallennaLeipa() {
             localStorage.setItem("vehnät", "1");
         } else {
             var uusVehnat = parseInt(localStorage.getItem("vehnät")) + 1;
-            console.log(uusVehnat);
             localStorage.setItem("vehnät", uusVehnat);
         }
     } else if(sessionStorage.getItem("leipa") == "seka") {
@@ -266,7 +290,6 @@ function tallennaLeipa() {
             localStorage.setItem("sekat", "1");
         } else {
             var uusSekat = parseInt(localStorage.getItem("sekat")) + 1;
-            console.log(uusVehnat);
             localStorage.setItem("sekat", uusSekat);
         }
     }
@@ -285,16 +308,14 @@ function tallennaLeipa() {
 function tulostaLeivat() {
     document.getElementById("tulostaulukkoDIV").style.display = "inline";
 
-    console.log("Vehnäleipiä: " + localStorage.getItem("vehnät"));
-    console.log("Sekaleipiä: " + localStorage.getItem("sekat"));
-
     document.getElementById("vehnaleivat").innerHTML = localStorage.getItem("vehnät");
     document.getElementById("sekaleivat").innerHTML = localStorage.getItem("sekat");
-
     
+    if(document.getElementById("tallennaBtn").disabled == true) {
+        document.getElementById("tulostaBtn").disabled = true;
+    }
 }
     
-
 
 
 
